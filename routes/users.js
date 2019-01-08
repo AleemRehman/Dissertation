@@ -6,6 +6,8 @@ router.get('/login', (req,res) => res.render('login'));
 
 router.get('/register', (req, res) => res.render('register'));
 
+/* TODO: add strength indicator bars, entails different regex patterns for dictating
+current strength and to determine ideal strength (basic bar system) */
 router.post('/register', (req,res) => {
     const {name , email, password, password2} = req.body;
     let errors = [];
