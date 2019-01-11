@@ -1,3 +1,3 @@
 module.exports = {
-    MongoUri: 'mongodb+srv://aleem-admin:Liverpool1!>@cluster0-clp6m.mongodb.net/test?retryWrites=true'
-}
+    MongoUri: 'mongodb://aleem-admin:Liverpool1!@cluster0-shard-00-00-clp6m.mongodb.net:27017,cluster0-shard-00-01-clp6m.mongodb.net:27017,cluster0-shard-00-02-clp6m.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true'
+};
