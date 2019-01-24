@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import NavBar from './components/layout/navbar';
+import SideBar from './components/sidebar/sidebar'
+import Footer from './components/layout/footer'
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-          <NavBar/>
+      <div className="wrapper">
+        <SideBar />
+        <div className="main-panel">
+          <NavBar />
+          {this.props.children}
+          <Footer />
         </div>
-      </BrowserRouter>
-
+      </div>
     );
   }
 }
