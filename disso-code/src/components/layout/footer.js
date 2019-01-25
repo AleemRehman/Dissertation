@@ -29,9 +29,6 @@ class Footer extends Component {
 		                  	</li>
 		                </ul>
 		            </nav>
-		            <p className="copyright pull-right">
-		                © 2016 <a href="http://www.creative-tim.com">Template by Creative Tim</a>. Created by Vuong Tran
-		            </p>
 	            </div>
           </footer>
 		);
