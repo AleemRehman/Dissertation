@@ -12,7 +12,7 @@ class NavBar extends Component {
                   <span className="icon-bar" />
                   <span className="icon-bar" />
                 </button>
-                <a className="navbar-brand" href="#">Paper App</a>
+                <a className="navbar-brand" href="#">SocialDash</a>
               </div>
               <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav navbar-left">

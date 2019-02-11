@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import NavBar from './components/layout/navbar';
+import Dashboard from './components/dashboard/dashboard';
+import CreateCampaign from './components/campaign/CreateCampaign'
 import SideBar from './components/sidebar/sidebar'
-import Footer from './components/layout/footer'
 
 class App extends Component {
   render() {
     return (
-      <div className="wrapper">
-        <SideBar />
-        <div className="main-panel">
-          <NavBar />
-          {this.props.children}
-          <Footer />
+      <BrowserRouter>
+        <div className="wrapper">
+          <SideBar />
+          <div className="main-panel">
+            <div className="App">
+              <NavBar />
+              <Switch>
+                <Route exact path='/'component={Dashboard} />
+                <Route path='/dashboard' component={Dashboard} />
+                <Route path='/create' component={CreateCampaign} />
+              </Switch>
+            </div>
+          </div>
         </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }
