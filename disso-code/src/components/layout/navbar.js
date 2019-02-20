@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 
 const NavBar = (props) => {
+    const {auth} = props;
+    console.log(auth);
 		return (
 			<nav className="navbar navbar-default navbar-fixed">
             <div className="container-fluid">
@@ -57,10 +59,16 @@ const NavBar = (props) => {
           </nav>
 		);
 	}
+  const mapStateToProps = (state) => {
+    return {
+      auth: state.firebase.auth
+    }
+  }
+
   const mapDispatchToProps = (dispatch) => {
     return {
       signOut: () => dispatch(signOut())
     }
   }
   
-  export default connect(null, mapDispatchToProps)(NavBar)
+  export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

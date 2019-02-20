@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -7,8 +10,9 @@ class Dashboard extends Component {
             window.demo.initChartist();
         });
     }
-
     render() {
+        const { auth } = this.props;
+        if(!auth.uid) return <Redirect to='/signin'/>
         return (
             <div className="content">
             <div className="container-fluid">
@@ -206,4 +210,10 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return{
+    auth: state.firebase.auth
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)

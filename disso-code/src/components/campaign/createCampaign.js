@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createCampaign } from '../../store/actions/campaignActions'
+import { Redirect } from 'react-router-dom'
 
 class CreateCampaign extends Component {
   state = {
@@ -19,6 +20,8 @@ class CreateCampaign extends Component {
     this.props.history.push('/');
   }
   render() {
+    const { auth } = this.props;
+    if(!auth.uid) return <Redirect to='/signin'/>
     return (
       <div className="content">
         <div className="container">
@@ -42,10 +45,16 @@ class CreateCampaign extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return{
+    auth: state.firebase.auth
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     createCampaign: (campaign) => dispatch(createCampaign(campaign))
   }
 }
 
-export default connect(null, mapDispatchToProps)(CreateCampaign)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateCampaign)

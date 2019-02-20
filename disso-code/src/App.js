@@ -5,6 +5,7 @@ import Dashboard from './components/dashboard/dashboard';
 import CreateCampaign from './components/campaign/createCampaign'
 import SideBar from './components/sidebar/sidebar'
 import SignIn from './components/auth/signIn'
+import SignUp from './components/auth/signUp'
 
 class App extends Component {
   render() {
@@ -20,27 +21,13 @@ class App extends Component {
                 <Route path='/dashboard' component={Dashboard} />
                 <Route path='/create' component={CreateCampaign} />
                 <Route path='/signin' component={SignIn} />
+                <Route path='/signup' component={SignUp} />
               </Switch>
             </div>
           </div>
         </div>
       </BrowserRouter>
     );
-  }
-}
-
-const reRoute = (props) => {
-  const {auth} = props;
-  if(auth.uid){
-
-  }else{
-    
-  }
-}
-
-const mapStateToProps = (state) => {
-  return{
-    auth: state.firebase.auth
   }
 }
 
