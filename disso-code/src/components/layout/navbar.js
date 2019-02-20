@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { signOut } from '../../store/actions/authActions'
 
-class NavBar extends Component {
-	render() {
+const NavBar = (props) => {
 		return (
 			<nav className="navbar navbar-default navbar-fixed">
             <div className="container-fluid">
@@ -47,17 +49,18 @@ class NavBar extends Component {
                       Account
                     </a>
                   </li>
-                  <li>
-                    <a href="#">
-                      Log out
-                    </a>
-                  </li>
+                  <li><NavLink to='/signin'>Login</NavLink></li>
+                  <li><a onClick={props.signOut}>Log Out</a></li>
                 </ul>
               </div>
             </div>
           </nav>
 		);
 	}
-}
-
-export default NavBar;
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      signOut: () => dispatch(signOut())
+    }
+  }
+  
+  export default connect(null, mapDispatchToProps)(NavBar)
