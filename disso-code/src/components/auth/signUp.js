@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
+import { storage } from '../../config/fbConfig'
 
 class SignUp extends Component {
   state = {
@@ -9,16 +10,50 @@ class SignUp extends Component {
     password: '',
     firstName: '',
     lastName: '',
+    image: null,
+    photoURL: '',
+    progress: 0
   }
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     })
   }
+
+  fileSelectedChange = (e) => {
+    this.setState({
+      image: e.target.files[0]
+    })
+  }
+
+  fileUploadHandler = (e) => {
+    const {image} = this.state;
+      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      uploadTask.on('state_changed', 
+      (snapshot) => {
+        // progrss function ....
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        this.setState({progress});
+      }, 
+      (error) => {
+        // error function ....
+        console.log(error);
+      }, 
+      () => {
+      // complete function ....
+        storage.ref('images').child(image.name).getDownloadURL().then(photoURL => {
+          console.log(photoURL);
+          this.setState({photoURL});
+      })
+    });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.signUp(this.state);
   }
+
   render() {
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to='/dashboard' /> 
@@ -26,6 +61,13 @@ class SignUp extends Component {
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
           <h5 className="grey-text text-darken-3">Sign Up</h5>
+          <div className="input-field">
+          <progress value={this.state.progress} max="100"/>
+            {/* <label htmlFor="picture"></label> */}
+            <input type="file" id='picture' onChange={this.fileSelectedChange} />
+            <button onClick={this.fileUploadHandler}>Upload</button>
+            <img src={this.state.photoURL || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="300" width="400"/>
+          </div>
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <input type="email" id='email' onChange={this.handleChange} />

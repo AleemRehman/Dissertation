@@ -47,9 +47,7 @@ const NavBar = (props) => {
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                   <li>
-                    <a href>
-                      Account
-                    </a>
+                    <img className="rounded"></img>
                   </li>
                   <li><NavLink to='/signin'>Login</NavLink></li>
                   <li><a onClick={props.signOut}>Log Out</a></li>
@@ -60,6 +58,7 @@ const NavBar = (props) => {
 		);
 	}
   const mapStateToProps = (state) => {
+    console.log(state);
     return {
       auth: state.firebase.auth
     }

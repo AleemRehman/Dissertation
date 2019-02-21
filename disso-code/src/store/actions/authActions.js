@@ -32,12 +32,12 @@ export const signIn = (credentials) => {
       firebase.auth().createUserWithEmailAndPassword(
         newUser.email, 
         newUser.password
-      ).then(resp => {
-        return firestore.collection('users').doc(resp.user.uid).set({
-          firstName: newUser.firstName,
-          lastName: newUser.lastName,
-          initials: newUser.firstName[0] + newUser.lastName[0]
-        });
+      ).then((userCredentials) => {
+       if(userCredentials.user){
+        userCredentials.user.updateProfile({
+          displayName: newUser.firstName[0] + newUser.lastName[0],
+          photoURL: newUser.photoURL
+        })};
       }).then(() => {
         dispatch({ type: 'SIGNUP_SUCCESS' });
       }).catch((err) => {
