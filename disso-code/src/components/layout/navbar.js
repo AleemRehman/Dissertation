@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
+import UserAvatar from 'react-user-avatar'
 
 const NavBar = (props) => {
     const {auth} = props;
-    console.log(auth);
 		return (
 			<nav className="navbar navbar-default navbar-fixed">
             <div className="container-fluid">
@@ -16,7 +16,6 @@ const NavBar = (props) => {
                   <span className="icon-bar" />
                   <span className="icon-bar" />
                 </button>
-                <a className="navbar-brand" href="#">SocialDash</a>
               </div>
               <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav navbar-left">
@@ -47,16 +46,22 @@ const NavBar = (props) => {
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                   <li>
-                    <img className="rounded"></img>
+                    <UserAvatar style={styles} size="45" src={props.auth.photoURL} name={props.auth.displayName}></UserAvatar>
                   </li>
-                  <li><NavLink to='/signin'>Login</NavLink></li>
                   <li><a onClick={props.signOut}>Log Out</a></li>
                 </ul>
               </div>
             </div>
           </nav>
 		);
-	}
+  }
+  
+ const styles = {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '25%'
+ };
+
   const mapStateToProps = (state) => {
     console.log(state);
     return {
