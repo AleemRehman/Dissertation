@@ -3,6 +3,25 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 import UserAvatar from 'react-user-avatar'
+import { Dropdown, Image } from 'semantic-ui-react'
+
+const userStyles = {
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: '25%'
+};
+
+const userTrigger = (props) => (
+  <span>
+      <UserAvatar style={userStyles} size="45" src={props.auth.photoURL} name={props.auth.displayName}/> {props.auth.displayName}
+  </span>
+)
+
+const userOptions = [
+  {key:'user', text: 'Account'},
+  {key:'settings', text: 'Settings'},
+  {key:'user', text: 'Sign Out'},
+]
 
 const NavBar = (props) => {
     const {auth} = props;
@@ -46,11 +65,10 @@ const NavBar = (props) => {
                   </li>
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
-                  
-                  <li>
-                    {/* <UserAvatar style={styles} size="45" src={props.auth.photoURL} name={props.auth.displayName}></UserAvatar> */}
-                  </li>
-                  <li><a onClick={props.signOut}>Log Out</a></li>
+                <li><a onClick={props.signOut}>Log Out</a></li>
+                {/* <li>
+                  <Dropdown trigger={userTrigger(props)} options={userOptions} pointing='top left' icon={null}/>
+                </li> */}
                 </ul>
               </div>
             </div>
@@ -58,12 +76,6 @@ const NavBar = (props) => {
 		);
   }
   
- const styles = {
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '25%'
- };
-
   const mapStateToProps = (state) => {
     console.log(state);
     return {
