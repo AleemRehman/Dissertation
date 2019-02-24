@@ -21,7 +21,7 @@ class CreateCampaign extends Component {
   }
   render() {
     const { auth } = this.props;
-    if(!auth.uid) return <Redirect to='/signin'/>
+    // if(!auth.uid) return <Redirect to='/signin'/>
     return (
       <div className="content">
         <div className="container">

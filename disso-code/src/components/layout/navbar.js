@@ -6,6 +6,7 @@ import UserAvatar from 'react-user-avatar'
 
 const NavBar = (props) => {
     const {auth} = props;
+    
 		return (
 			<nav className="navbar navbar-default navbar-fixed">
             <div className="container-fluid">
@@ -45,8 +46,9 @@ const NavBar = (props) => {
                   </li>
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
+                  
                   <li>
-                    <UserAvatar style={styles} size="45" src={props.auth.photoURL} name={props.auth.displayName}></UserAvatar>
+                    {/* <UserAvatar style={styles} size="45" src={props.auth.photoURL} name={props.auth.displayName}></UserAvatar> */}
                   </li>
                   <li><a onClick={props.signOut}>Log Out</a></li>
                 </ul>
