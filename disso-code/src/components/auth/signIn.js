@@ -24,55 +24,55 @@ class SignIn extends Component {
     if(auth.uid) return <Redirect to='/dashboard'/>
     return (
       <div className='login-form'>
-      <style>{`
-        body > div,
-        body > div > div,
-        body > div > div > div.login-form {
-          height: 100%;
-        }
-      `}</style>
-      <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Form size='large' inverted>
-            <Segment inverted stacked>
-              <Form.Input fluid icon='user' 
-              iconPosition='left' 
-              placeholder='email' 
-              name='email'
-              type='email'
-              value={email}
-              onChange={this.handleChange} 
-              />
-              <Form.Input
-                fluid
-                icon='lock'
-                iconPosition='left'
-                placeholder='password'
-                type='password' 
-                name='password'
-                value={password}
-                onChange={this.handleChange}
-              />
+        <style>{`
+          body > div,
+          body > div > div,
+          body > div > div > div.login-form {
+            height: 100%;
+          }
+        `}</style>
+        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Form size='large' inverted>
+              <Segment inverted stacked>
+                <Form.Input fluid icon='user' 
+                iconPosition='left' 
+                placeholder='email' 
+                name='email'
+                type='email'
+                value={email}
+                onChange={this.handleChange} 
+                />
+                <Form.Input
+                  fluid
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='password'
+                  type='password' 
+                  name='password'
+                  value={password}
+                  onChange={this.handleChange}
+                />
 
-              <Form.Button 
-              color='teal' 
-              fluid size='small'
-              onClick={this.handleSubmit}>
-                Login
-              </Form.Button>
-            </Segment>
-          </Form>
-          { authError ? 
-          <Message
-            attached='bottom' warning>
-            { this.props.authError ? <p>{this.props.authError}</p> : null }
-          </Message> 
-          : null }
-          <Message>
-            New User? <a href='/signup'>Sign Up</a>
-          </Message>
-        </Grid.Column>
-      </Grid>
+                <Form.Button 
+                color='teal' 
+                fluid size='small'
+                onClick={this.handleSubmit}>
+                  Login
+                </Form.Button>
+              </Segment>
+            </Form>
+            { authError ? 
+            <Message
+              attached='bottom' warning>
+              { this.props.authError ? <p>{this.props.authError}</p> : null }
+            </Message> 
+            : null }
+            <Message>
+              New User? <a href='/signup'>Sign Up</a>
+            </Message>
+          </Grid.Column>
+        </Grid>
       </div>
     )
   }
