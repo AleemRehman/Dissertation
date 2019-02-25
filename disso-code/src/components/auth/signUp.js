@@ -66,8 +66,7 @@ class SignUp extends Component {
           body > div > div,
           body > div > div > div.login-form {
             height: 100%;
-          }
-        `}</style>
+          }`}</style>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Form size='large' inverted>
@@ -153,41 +152,6 @@ class SignUp extends Component {
           </Grid.Column>
         </Grid>
       </div>
-
-      // <div className="container">
-      //   <form className="white" onSubmit={this.handleSubmit}>
-      //     <h5 className="grey-text text-darken-3">Sign Up</h5>
-      //     <div className="input-field">
-      //     <progress value={this.state.progress} max="100"/>
-      //       {/* <label htmlFor="picture"></label> */}
-      //       <input type="file" id='picture' onChange={this.fileSelectedChange} />
-      //       <button onClick={this.fileUploadHandler}>Upload</button>
-      //       <img src={this.state.photoURL || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="300" width="400"/>
-      //     </div>
-      //     <div className="input-field">
-      //       <label htmlFor="email">Email</label>
-      //       <input type="email" id='email' onChange={this.handleChange} />
-      //     </div>
-      //     <div className="input-field">
-      //       <label htmlFor="password">Password</label>
-      //       <input type="password" id='password' onChange={this.handleChange} />
-      //     </div>
-      //     <div className="input-field">
-      //       <label htmlFor="firstName">First Name</label>
-      //       <input type="text" id='firstName' onChange={this.handleChange} />
-      //     </div>
-      //     <div className="input-field">
-      //       <label htmlFor="lastName">Last Name</label>
-      //       <input type="text" id='lastName' onChange={this.handleChange} />
-      //     </div>
-      //     <div className="input-field">
-      //       <button className="btn pink lighten-1 z-depth-0">Sign Up</button>
-      //       <div className="center red-text">
-      //         { authError ? <p>{authError}</p> : null }
-      //       </div>
-      //     </div>
-      //   </form>
-      // </div>
     )
   }
 }
