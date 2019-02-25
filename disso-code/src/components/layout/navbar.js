@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 import UserAvatar from 'react-user-avatar'
-import { Dropdown, Image } from 'semantic-ui-react'
+import { Dropdown, Image, Menu, DropdownItem } from 'semantic-ui-react'
 
 const userStyles = {
   justifyContent: 'center',
@@ -13,7 +13,7 @@ const userStyles = {
 
 const userTrigger = (props) => (
   <span>
-      <UserAvatar style={userStyles} size="45" src={props.auth.photoURL} name={props.auth.displayName}/> {props.auth.displayName}
+    <UserAvatar style={userStyles} size="45" src={props.auth.photoURL} name={props.auth.displayName} alignItems='center'/>
   </span>
 )
 
@@ -38,7 +38,7 @@ const NavBar = (props) => {
                 </button>
               </div>
               <div className="collapse navbar-collapse">
-                <ul className="nav navbar-nav navbar-left">
+                {/* <ul className="nav navbar-nav navbar-left">
                   <li>
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                       <i className="fa fa-dashboard" />
@@ -63,12 +63,20 @@ const NavBar = (props) => {
                       <i className="fa fa-search" />
                     </a>
                   </li>
-                </ul>
-                <ul className="nav navbar-nav navbar-right">
-                <li><a onClick={props.signOut}>Log Out</a></li>
-                {/* <li>
-                  <Dropdown trigger={userTrigger(props)} options={userOptions} pointing='top left' icon={null}/>
-                </li> */}
+                </ul> */}
+                <ul className="nav navbar navbar-right">
+                <li><a onClick={props.signOut}>Log Out</a></li> */}
+                <li>
+                  <Menu borderless small>
+                    <Dropdown trigger={userTrigger(props)} icon={null} selection>
+                      <Dropdown.Menu>
+                        <Dropdown.Item>Log Out</Dropdown.Item>
+                        <Dropdown.Item>Log Out</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Menu>
+                  
+                </li>
                 </ul>
               </div>
             </div>
